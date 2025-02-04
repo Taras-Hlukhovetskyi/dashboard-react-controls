@@ -30,7 +30,7 @@ export const setFieldState = (args, state) => {
 
 export const areFormValuesChanged = (initialValues, values) => {
   const replacer = (key, value) => {
-    if (value === '') {
+    if (value === '' || key === 'labelsAreInEditMode') {
       return undefined
     }
 
