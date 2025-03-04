@@ -117,8 +117,8 @@ const NewChipForm = React.forwardRef(
 
     useLayoutEffect(() => {
       if (!chipData.keyFieldWidth && !chipData.valueFieldWidth) {
-        const currentWidthKeyInput = refInputKey.current.scrollWidth + 1
-        const currentWidthValueInput = refInputValue.current.scrollWidth + 1
+        const currentWidthKeyInput = getTextWidth(refInputKey.current)
+        const currentWidthValueInput = getTextWidth(refInputValue.current)
 
         const keyFieldWidth =
           !chipData.key || currentWidthKeyInput <= minWidthInput
@@ -132,6 +132,9 @@ const NewChipForm = React.forwardRef(
             : currentWidthValueInput >= maxWidthInput
               ? maxWidthInput
               : currentWidthValueInput
+
+        refInputKey.current.style.width = `${keyFieldWidth}px`
+        refInputValue.current.style.width = `${valueFieldWidth}px`
 
         setChipData(prevState => ({
           ...prevState,

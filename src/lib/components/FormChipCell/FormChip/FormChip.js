@@ -14,7 +14,7 @@ illegal under applicable law, and the grant of the foregoing license
 under the Apache 2.0 license is conditioned upon your compliance with
 such restriction.
 */
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import NewChipForm from '../NewChipForm/NewChipForm'
@@ -52,15 +52,13 @@ const FormChip = React.forwardRef(
   ) => {
     const chipRef = React.useRef()
 
-    useEffect(() => {
-      queueMicrotask(() => {
-        if (chipRef.current && setChipsSizes) {
-          setChipsSizes(state => ({
-            ...state,
-            [chipIndex]: chipRef.current.getBoundingClientRect().width
-          }))
-        }
-      })
+    useLayoutEffect(() => {
+      if (chipRef.current && setChipsSizes) {
+        setChipsSizes(state => ({
+          ...state,
+          [chipIndex]: chipRef.current.getBoundingClientRect().width
+        }))
+      }
     }, [chipIndex, setChipsSizes])
 
     return (
