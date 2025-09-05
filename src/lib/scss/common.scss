@@ -1010,3 +1010,47 @@ a {
     opacity: 1;
   }
 }
+
+/* =========== SORT ============= */
+
+.sortable-header {
+  &-cell {
+    position: relative;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+
+    .sort-icon {
+      position: absolute;
+      top: auto;
+      right: 2px;
+      bottom: auto;
+      display: none;
+    }
+
+    &_active {
+      background-color: colors.$alabaster;
+
+      .sort-icon {
+        display: block;
+      }
+    }
+
+    &:hover {
+      .sort-icon {
+        display: block;
+      }
+    }
+
+    label {
+      cursor: pointer;
+    }
+  }
+
+  &-label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-right: 25px;
+  }
+}
