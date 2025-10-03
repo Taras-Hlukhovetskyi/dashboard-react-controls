@@ -5,6 +5,7 @@ import js from '@eslint/js'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import tseslint from 'typescript-eslint'
+import storybook from 'eslint-plugin-storybook'
 
 import { viteGlobals } from './eslint.mlrun-globals.mjs'
 
@@ -80,5 +81,6 @@ export default [
       quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
       semi: ['error', 'never']
     }
-  }
+  },
+  ...storybook.configs['flat/recommended']
 ]

@@ -14,32 +14,30 @@ illegal under applicable law, and the grant of the foregoing license
 under the Apache 2.0 license is conditioned upon your compliance with
 such restriction.
 */
-import React from 'react'
 
-import Tooltip from '/src/lib/components/Tooltip/Tooltip'
-import TextTooltipTemplate from '/src/lib/components/TooltipTemplate/TextTooltipTemplate'
-import EyeIcon from '../../images/eye.svg?react'
+const config = {
+  framework: {
+    name: '@storybook/react-vite',
+    options: {}
+  },
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-docs'],
+  core: {
+    builder: '@storybook/builder-vite'
+  },
+  // staticDirs: ['../src/lib/images'],
 
-export default {
-  title: 'Example/Tooltip',
-  component: Tooltip
+  // async viteFinal(viteConfig) {
+  //   const { mergeConfig } = await import('vite');
+  //   const svgr = (await import('vite-plugin-svgr')).default;
+
+  //   return mergeConfig(viteConfig, {
+  //     plugins: [
+  //       svgr({ include: '**/*.svg' }), // enables ?react imports
+  //     ]
+  //   });
+  // }
+
 }
 
-const commonArgs = {
-  template: <TextTooltipTemplate text="Tooltip" />,
-  textShow: true
-}
-
-const Template = args => <Tooltip {...args} />
-
-export const Normal = Template.bind({})
-Normal.args = {
-  ...commonArgs,
-  children: 'Tooltip'
-}
-
-export const Icon = Template.bind({})
-Icon.args = {
-  ...commonArgs,
-  children: <EyeIcon />
-}
+export default config

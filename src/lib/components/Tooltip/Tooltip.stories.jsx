@@ -14,19 +14,32 @@ illegal under applicable law, and the grant of the foregoing license
 under the Apache 2.0 license is conditioned upon your compliance with
 such restriction.
 */
-module.exports = {
-  babel: async (options) => {
-    options.plugins.push('babel-plugin-inline-react-svg')
-    return options
-  },
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions'
-  ],
-  framework: '@storybook/react',
-  core: {
-    builder: 'webpack5'
-  }
+import React from 'react'
+
+import Tooltip from '/src/lib/components/Tooltip/Tooltip'
+import TextTooltipTemplate from '/src/lib/components/TooltipTemplate/TextTooltipTemplate'
+import EyeIcon from '../../images/eye-icon.svg?react'
+
+export default {
+  title: 'Example/Tooltip',
+  component: Tooltip
+}
+
+const commonArgs = {
+  template: <TextTooltipTemplate text="Tooltip" />,
+  textShow: true
+}
+
+const Template = args => <Tooltip {...args} />
+
+export const Normal = Template.bind({})
+Normal.args = {
+  ...commonArgs,
+  children: 'Tooltip'
+}
+
+export const Icon = Template.bind({})
+Icon.args = {
+  ...commonArgs,
+  children: <EyeIcon />
 }

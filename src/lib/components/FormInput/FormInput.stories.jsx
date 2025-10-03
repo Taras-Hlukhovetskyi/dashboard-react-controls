@@ -17,77 +17,85 @@ such restriction.
 import React from 'react'
 import { Form } from 'react-final-form'
 
-import FormCombobox from '/src/lib/components/FormCombobox/FormCombobox'
+import FormInput from '/src/lib/components/FormInput/FormInput'
+import { getValidationRules } from '/src/lib/utils/validation.util'
+import { fn } from 'storybook/test'
 
 export default {
-  title: 'Example/FormCombobox',
-  component: FormCombobox
+  title: 'Example/FormInput',
+  component: FormInput,
+  args: {
+    onValidationError: fn()
+  }
 }
 
 const commonArgs = {
-  name: 'combobox',
-  selectOptions: [
-    {
-      className: 'path-type-store',
-      label: 'MLRun store',
-      id: 'store://'
-    },
-    {
-      className: 'path-type-v3io',
-      label: 'V3IO',
-      id: 'v3io:///'
-    }
-  ]
+  name: 'input',
+  placeholder: 'placeholder'
 }
-
-const Template = args => <Form onSubmit={() => null}>{() => <FormCombobox {...args} />}</Form>
+const Template = args => <Form onSubmit={() => null}>{() => <FormInput {...args} />}</Form>
 
 export const Dense = Template.bind({})
 Dense.args = {
   ...commonArgs,
-  density: 'dense'
+  density: 'dense',
+  label: 'Dense'
 }
 
 export const Normal = Template.bind({})
 Normal.args = {
   ...commonArgs,
-  density: 'normal'
+  density: 'normal',
+  label: 'Normal'
 }
 
 export const Medium = Template.bind({})
 Medium.args = {
   ...commonArgs,
-  density: 'medium'
+  density: 'medium',
+  label: 'Medium'
 }
 
 export const Chunky = Template.bind({})
 Chunky.args = {
   ...commonArgs,
-  density: 'chunky'
+  density: 'chunky',
+  label: 'Chunky'
 }
 
-export const withDefaultValue = Template.bind({})
-withDefaultValue.args = {
+export const WithTip = Template.bind({})
+WithTip.args = {
   ...commonArgs,
-  selectDefaultValue: {
-    className: 'path-type-store',
-    label: 'MLRun store',
-    id: 'store://'
+  label: 'With Tip',
+  tip: 'Tip'
+}
+
+export const WithValidationRules = Template.bind({})
+WithValidationRules.args = {
+  ...commonArgs,
+  density: 'chunky',
+  label: 'With validation rules',
+  required: true,
+  validationRules: getValidationRules('common.name')
+}
+
+export const WithLink = Template.bind({})
+WithLink.args = {
+  ...commonArgs,
+  label: 'label with static link',
+  link: {
+    show: true,
+    url: 'https:github.com'
   },
-  inputDefaultValue: 'artifacts/default'
+  value: 'test'
 }
 
-export const withSuggestions = Template.bind({})
-withSuggestions.args = {
+export const Range = Template.bind({})
+Range.args = {
   ...commonArgs,
-  suggestionList: [
-    {
-      label: 'Artifact',
-      id: 'artifacts'
-    },
-    {
-      label: 'Feature Vector',
-      id: 'featureVector'
-    }
-  ]
+  label: 'Range input',
+  placeholder: '',
+  type: 'number',
+  max: 10,
+  min: 1
 }

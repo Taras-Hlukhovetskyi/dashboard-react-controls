@@ -26,7 +26,7 @@ import {
   TERTIARY_BUTTON
 } from '../../constants'
 
-import EyeIcon from '../../images/eye.svg?react'
+import EyeIcon from '../../images/eye-icon.svg?react'
 import CaretIcon from '../../images/dropdown.svg?react'
 
 export default {

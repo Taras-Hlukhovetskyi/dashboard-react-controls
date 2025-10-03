@@ -17,81 +17,77 @@ such restriction.
 import React from 'react'
 import { Form } from 'react-final-form'
 
-import FormInput from '/src/lib/components/FormInput/FormInput'
-import { getValidationRules } from '/src/lib/utils/validation.util'
+import FormCombobox from '/src/lib/components/FormCombobox/FormCombobox'
 
 export default {
-  title: 'Example/FormInput',
-  component: FormInput
+  title: 'Example/FormCombobox',
+  component: FormCombobox
 }
 
 const commonArgs = {
-  name: 'input',
-  placeholder: 'placeholder'
+  name: 'combobox',
+  selectOptions: [
+    {
+      className: 'path-type-store',
+      label: 'MLRun store',
+      id: 'store://'
+    },
+    {
+      className: 'path-type-v3io',
+      label: 'V3IO',
+      id: 'v3io:///'
+    }
+  ]
 }
-const Template = args => <Form onSubmit={() => null}>{() => <FormInput {...args} />}</Form>
+
+const Template = args => <Form onSubmit={() => null}>{() => <FormCombobox {...args} />}</Form>
 
 export const Dense = Template.bind({})
 Dense.args = {
   ...commonArgs,
-  density: 'dense',
-  label: 'Dense'
+  density: 'dense'
 }
 
 export const Normal = Template.bind({})
 Normal.args = {
   ...commonArgs,
-  density: 'normal',
-  label: 'Normal'
+  density: 'normal'
 }
 
 export const Medium = Template.bind({})
 Medium.args = {
   ...commonArgs,
-  density: 'medium',
-  label: 'Medium'
+  density: 'medium'
 }
 
 export const Chunky = Template.bind({})
 Chunky.args = {
   ...commonArgs,
-  density: 'chunky',
-  label: 'Chunky'
+  density: 'chunky'
 }
 
-export const withTip = Template.bind({})
-withTip.args = {
+export const WithDefaultValue = Template.bind({})
+WithDefaultValue.args = {
   ...commonArgs,
-  label: 'With Tip',
-  tip: 'Tip'
-}
-
-export const withValidationRules = Template.bind({})
-withValidationRules.args = {
-  ...commonArgs,
-  density: 'chunky',
-  label: 'With validation rules',
-  required: true,
-  validationRules: getValidationRules('common.name')
-}
-
-export const withLink = Template.bind({})
-withLink.args = {
-  ...commonArgs,
-  label: 'label with static link',
-  link: {
-    show: true,
-    url: 'https:github.com'
+  selectDefaultValue: {
+    className: 'path-type-store',
+    label: 'MLRun store',
+    id: 'store://'
   },
-  value: 'test'
+  inputDefaultValue: 'artifacts/default'
 }
 
-export const Range = Template.bind({})
-Range.args = {
+export const WithSuggestions = Template.bind({})
+WithSuggestions.args = {
   ...commonArgs,
-  label: 'Range input',
-  placeholder: '',
-  type: 'number',
-  max: 10,
-  min: 1
+  suggestionList: [
+    {
+      label: 'Artifact',
+      id: 'artifacts'
+    },
+    {
+      label: 'Feature Vector',
+      id: 'featureVector'
+    }
+  ]
 }
