@@ -24,20 +24,7 @@ const config = {
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   core: {
     builder: '@storybook/builder-vite'
-  },
-  // staticDirs: ['../src/lib/images'],
-
-  // async viteFinal(viteConfig) {
-  //   const { mergeConfig } = await import('vite');
-  //   const svgr = (await import('vite-plugin-svgr')).default;
-
-  //   return mergeConfig(viteConfig, {
-  //     plugins: [
-  //       svgr({ include: '**/*.svg' }), // enables ?react imports
-  //     ]
-  //   });
-  // }
-
+  }
 }
 
 export default config
