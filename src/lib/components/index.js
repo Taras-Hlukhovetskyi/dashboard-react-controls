@@ -34,6 +34,7 @@ import FormToggle from './FormToggle/FormToggle'
 import LoadButton from './LoadButton/LoadButton'
 import Loader from './Loader/Loader'
 import LoaderForSuspenseFallback from './Loader/LoaderForSuspenseFallback'
+import MaskedInput from './MaskedInput/MaskedInput'
 import Modal from './Modal/Modal'
 import PopUpDialog from './PopUpDialog/PopUpDialog'
 import ReadOnlyChips from './ReadOnlyChips/ReadOnlyChips'
@@ -65,6 +66,7 @@ export {
   LoadButton,
   Loader,
   LoaderForSuspenseFallback,
+  MaskedInput,
   Modal,
   PopUpDialog,
   ReadOnlyChips,
