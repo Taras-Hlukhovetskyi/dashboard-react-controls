@@ -80,5 +80,15 @@ export default [
       quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
       semi: ['error', 'never']
     }
+  },
+  {
+    files: ['**/*.{test,spec}.{js,jsx}', 'src/test/**/*.{js,jsx}'],
+    languageOptions: {
+      globals: { ...globals.node }
+    },
+    rules: {
+      'react/prop-types': 'off',
+      'react/display-name': 'off'
+    }
   }
 ]
