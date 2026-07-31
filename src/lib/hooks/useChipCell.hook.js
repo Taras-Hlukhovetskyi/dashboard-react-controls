@@ -159,7 +159,6 @@ export const useChipCell = (isEditMode, visibleChipsMaxLength, withInitialParent
       setVisibleChipsCount(chipIndex)
       setShowChips(true)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     chipBlockMarginRight,
     chipCellInitialWidth,
